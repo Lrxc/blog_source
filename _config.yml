@@ -101,7 +101,8 @@ deploy:
   type: git
   repo: https://github.com/Lrxc/blog.git
   branch: master
-  
+
+#开启本地搜索
 search:
   path: search.xml
   field: post
