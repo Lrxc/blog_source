@@ -7,6 +7,8 @@ categories:
 tags: [linux,shell]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 #set timeout 30
 

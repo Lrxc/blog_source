@@ -5,6 +5,8 @@ categories: 技巧
 tags: 技巧
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
  1. 关闭不必要服务
 * Connected User Experiences and Telemetry：用于收集错误信息，对于硬盘消耗较大，是很多低配电脑卡顿的元凶。

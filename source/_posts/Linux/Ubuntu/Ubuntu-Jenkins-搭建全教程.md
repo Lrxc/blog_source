@@ -7,6 +7,8 @@ categories:
 tags: [linux,ubuntu]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ##一 安装Jenkins 
 1 需要先安装jdk环境

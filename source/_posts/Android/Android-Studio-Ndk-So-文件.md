@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一 下载NKD,并解压
 官网：https://developer.android.com/index.html

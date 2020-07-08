@@ -5,6 +5,8 @@ categories: 技巧
 tags: 技巧
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一 上报源码至215内网(开发人员提供)  
 ![image.png](https://upload-images.jianshu.io/upload_images/2803682-93171cdc611072d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

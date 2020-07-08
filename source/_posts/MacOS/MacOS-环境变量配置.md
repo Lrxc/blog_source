@@ -5,6 +5,8 @@ categories: MacOS
 tags: macos
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一  配置bash_profile文件
 macos 环境配置就是配置bash_profile文件 

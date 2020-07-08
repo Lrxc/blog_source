@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 项目中遇到的，使用notifyDataSetChanged() 刷新闪屏问题，网上找资料说 
 ```

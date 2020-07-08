@@ -5,6 +5,8 @@ categories: Java
 tags: java
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 1. PLSQL 官网下载
 https://www.allroundautomations.com/plsqldev.html

@@ -5,6 +5,8 @@ categories: MacOS
 tags: macos
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 配置如下：mbp 2018 MoJave
 

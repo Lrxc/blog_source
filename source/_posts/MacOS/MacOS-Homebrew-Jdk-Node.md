@@ -5,6 +5,8 @@ categories: MacOS
 tags: macos
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 #### 一 安装Homebrew 
 - 官网：[https://brew.sh/index_zh-tw](https://brew.sh/index_zh-tw)

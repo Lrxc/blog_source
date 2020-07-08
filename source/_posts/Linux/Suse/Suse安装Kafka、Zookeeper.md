@@ -7,6 +7,8 @@ categories:
 tags: [linux,suse]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ##安装环境及版本：
 - 系统：Suse 12.2.2

@@ -5,6 +5,8 @@ categories: Java
 tags: java
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ####使用
 - ./conf/settings.xml，在<mirrors>标签中添加 mirror 子节点

@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 1 if else switch case 效率
 ```

@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一. 注册平台信息
 官网：https://www.jiguang.cn/

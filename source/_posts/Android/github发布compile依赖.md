@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 1. 本地新建Android Studio项目
 2. 新建Module，选择Android library(我的名字是dialog)

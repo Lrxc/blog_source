@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一 .  获取开发者APP_ID
 打开微信开发者平台 创建应用 获取APP_ID，一般两三天审核通过

@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 首先会Rxjava和Retrofit基本使用
 Rxjava入门使用：http://www.jianshu.com/p/43a6ff622c54

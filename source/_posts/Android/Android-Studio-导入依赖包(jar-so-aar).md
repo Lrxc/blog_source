@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一.  Jar
 直接放到lib目录，选中右键 add as library  即可

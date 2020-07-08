@@ -5,6 +5,8 @@ categories: Spring
 tags: spring
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 @RequestBody这个一般处理的是在ajax请求中声明contentType: "application/json; charset=utf-8"时候。也就是json数据或者xml(我没用过这个，用的是json)
 

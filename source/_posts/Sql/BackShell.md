@@ -5,6 +5,8 @@ categories: Sql
 tags: sql
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 #### 1. 检查是log_bin是否开启
 

@@ -7,6 +7,8 @@ categories:
 tags: [linux,ubuntu]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一  安装
 1 直接命令安装

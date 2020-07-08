@@ -5,6 +5,8 @@ categories: Java
 tags: java
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ##环境及版本：
 - 框架：SpringMVC 5.1.7.RELEASE

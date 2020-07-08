@@ -5,6 +5,8 @@ categories: Sql
 tags: sql
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ## 一 数据库基本操作
 ```

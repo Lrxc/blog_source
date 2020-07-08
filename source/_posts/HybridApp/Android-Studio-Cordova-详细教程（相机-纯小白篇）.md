@@ -5,6 +5,8 @@ categories: HybridApp
 tags: hybridapp
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一。  首先安装Cordova
 1. 打开Cordova官网 http://cordova.axuer.com 点击入门

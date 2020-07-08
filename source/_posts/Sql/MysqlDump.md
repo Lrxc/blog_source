@@ -5,8 +5,12 @@ categories: Sql
 tags: sql
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ## 导出
+**格式：mysqldump -u用戶名 -p密码 -d 数据库名 表名 > 脚本名;**
+
 **1. 导出所有数据库**
 
 	mysqldump -uroot -proot --all-databases >/tmp/all.sql
@@ -15,56 +19,34 @@ tags: sql
 
 	mysqldump -uroot -proot --databases db1 db2 >/tmp/db1_and_db2.sql
 	简写：
-	mysqldump -uroot　-p　数据库名　>xxx.sql　
+	mysqldump -uroot　-p　db1 db2 >xxx.sql　
 
 **3. 导出db1中的a1、a2表**
 
 	mysqldump -uroot -proot --databases db1 --tables a1 a2 >/tmp/db1.sql
 	简写：
-	mysqldump -uroot　-p　数据库名 表名1 表名2　>xxx.sql　
+	mysqldump -uroot　-p　db1 a1 a2　>xxx.sql　
 
 **4. 条件导出，导出db1表a1中id=1的数据**
 
-	mysqldump -uroot -proot --databases db1 --tables a1 --where='id=1' >/tmp/a1.sql
+	mysqldump -uroot -proot --databases db1 --tables a1 --where="id='abc1000'" >/tmp/a1.sql
+	简写：
+	mysqldump -uroot　-p　db1 a1 'id=1' >xxx.sql 
 
-**5. 生成新的binlog文件,-F**
+**5. 导出结构不导出数据(-d)**
 
-有时候会希望导出数据之后生成一个新的binlog文件,只需要加上-F参数即可
-
-	mysqldump -uroot -proot --databases db1 -F >/tmp/db1.sql
-
-**6. 只导出表结构不导出数据，--no-data**
-
-	mysqldump -uroot -proot --no-data --databases db1 >/tmp/db1.sql
-
-**7.  跨服务器导出导入数据**
-
-将h1服务器中的db1数据库的所有数据导入到h2中的db2数据库中，db2的数据库必须存在否则会报错
-
-```undefined
-mysqldump --host=h1 -uroot -proot --databases db1 |mysql --host=h2 -uroot -proot db2
 ```
-
-加上-C参数可以启用压缩传递。
-
-```bash
-mysqldump --host=192.168.80.137 -uroot -proot -C --databases test |mysql --host=192.168.80.133 -uroot -proot test 
-```
-
-**8. 导出结构不导出数据**
-
-```css
-mysqldump --opt -d db1 -uroot -p > db1.sql
+mysqldump -uroot -p --opt -d db1 >db1.sql
 //说明：
-mysqldump　--opt　-d　数据库名　-u　root　-p　>　xxx.sql　
+mysqldump -uroot -p --opt -d 数据库名 >xxx.sql　
 ```
 
-**9. 导出数据不导出结构**
+**6. 导出数据不导出结构(-t)**
 
-```css
-mysqldump -t db1 -uroot -p > db1.sql
+```
+mysqldump -uroot -p -t db1 >db1.sql
 //说明：
-mysqldump　-t　数据库名　-uroot　-p　>　xxx.sql　
+mysqldump -uroot -p -t 数据库名 >xxx.sql　
 ```
 
 ## 导入
@@ -75,19 +57,39 @@ mysqldump　-t　数据库名　-uroot　-p　>　xxx.sql　
 
 ```mysql
 #语法格式
-mysql -u用户名 -p密码 < 要导入的数据库数据(runoob.sql)
+mysql -u用户名 -p密码 < 要导入的数据库数据(test.sql)
 #实例：
-mysql -uroot -p123456 < runoob.sql
+mysql -uroot -p123456 < /tmp/test.sql
 ```
 
-**1. source 命令导入**
+**2. source 命令导入**
 
-source 命令导入数据库需要先登录到数库终端：
+**source 命令导入数据库需要先登录到数库终端**
 
 ```bash
 mysql> create database abc character set utf8 collate utf8_general_ci;
 mysql> create database abc;      # 创建数据库
 mysql> use abc;                  # 使用已创建的数据库 
 mysql> set names utf8;           # 设置编码
-mysql> source /home/abc/abc.sql  # 导入备份数据库
+mysql> source /tmp/test.sql  # 导入备份数据库
 ```
+
+## 其他命令
+
+```shell
+mysql> show processlist		#当前mysql任务列表，比如导入数据卡住查看
+```
+
+**mysqldump -u用戶名 -p密码 -d 数据库名 表名 > 脚本名;**
+
+```
+//导出整个数据库结构和数据
+mysqldump -h localhost -uroot -p123456 database > dump.sql
+//导出单个数据表结构和数据
+mysqldump -h localhost -uroot -p123456 database table > dump.sql
+//导出整个数据库结构（不包含数据）
+mysqldump -h localhost -uroot -p123456 -d database > dump.sql
+//导出单个数据表结构（不包含数据）
+mysqldump -h localhost -uroot -p123456 -d database table > dump.sql
+```
+

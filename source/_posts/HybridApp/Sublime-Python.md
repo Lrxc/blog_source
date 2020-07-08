@@ -5,6 +5,8 @@ categories: HybridApp
 tags: hybridapp
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 Sublime安装插件
 

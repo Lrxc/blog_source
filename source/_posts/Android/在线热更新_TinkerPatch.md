@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 说明：TinkerPatch和Tinker并不是一个东西。TinkerPatch支持在线更新
 想看Tinker的点这个http://www.jianshu.com/p/ad7deea62a07

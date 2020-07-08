@@ -5,6 +5,8 @@ categories: Sql
 tags: sql
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一 普通索引
 1.  3种创建方式

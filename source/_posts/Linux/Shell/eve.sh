@@ -7,6 +7,8 @@ categories:
 tags: [linux,shell]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 echo "----------------------------repo add start----------------------------"
 zypper mr -d SLES12-SP2-12.2-0;

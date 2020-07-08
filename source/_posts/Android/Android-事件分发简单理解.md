@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 简单理解：Activity、ViewGroup(LinearLayout,RelativeLayout...)，View（Button,TextView...）
 

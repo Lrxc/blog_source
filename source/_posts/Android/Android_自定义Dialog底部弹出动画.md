@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 效果图如下
 ![GIF.gif](http://upload-images.jianshu.io/upload_images/2803682-a275b5a23e0357a8.gif?imageMogr2/auto-orient/strip)

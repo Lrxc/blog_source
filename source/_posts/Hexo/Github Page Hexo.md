@@ -5,6 +5,8 @@ categories: Hexo
 tags: hexo
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 环境
 

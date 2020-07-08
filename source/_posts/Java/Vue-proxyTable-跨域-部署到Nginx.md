@@ -5,6 +5,8 @@ categories: Java
 tags: java
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 说明：proxyTable 只是前端开发调试时有效，真正的转发需要Nginx。
 

@@ -7,6 +7,8 @@ categories:
 tags: [linux,ubuntu]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ##安装环境及版本：
 - 系统：Ubuntu 18.0.4

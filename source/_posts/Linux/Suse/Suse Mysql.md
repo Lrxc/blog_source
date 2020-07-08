@@ -7,6 +7,8 @@ categories:
 tags: [linux,suse]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 官网：https://dev.mysql.com/doc/mysql-sles-repo-quick-guide/en/
 

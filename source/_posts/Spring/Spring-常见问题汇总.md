@@ -5,6 +5,8 @@ categories: Spring
 tags: spring
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 1 异常：org.apache.ibatis.binding.BindingException
 原因：maven项目中 静态资源打包被拦截

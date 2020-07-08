@@ -7,6 +7,8 @@ categories:
 tags: [linux,suse]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 #### 常用命令：
 ```shell

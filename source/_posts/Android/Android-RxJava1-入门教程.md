@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 添加依赖（注意是rxjava1 不是rxjava2 ！！）
 ```

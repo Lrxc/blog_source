@@ -7,6 +7,8 @@ categories:
 tags: [linux,centos]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 #### 1 添加MySQL SLES存储库
 

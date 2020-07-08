@@ -5,6 +5,8 @@ categories: HybridApp
 tags: hybridapp
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 思路：使用flex布局
 

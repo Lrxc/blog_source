@@ -5,6 +5,8 @@ categories: Java
 tags: java
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ####  Java Jdk
 修改 /etc/profile 文件

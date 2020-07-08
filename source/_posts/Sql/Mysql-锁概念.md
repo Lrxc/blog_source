@@ -5,6 +5,8 @@ categories: Sql
 tags: sql
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ##一 乐观锁
 用数据版本（Version）记录机制实现，这是乐观锁最常用的一种实现方式。何谓数据版本？即为数据增加一个版本标识，一般是通过为数据库表增加一个数字类型的 “version” 字段来实现。

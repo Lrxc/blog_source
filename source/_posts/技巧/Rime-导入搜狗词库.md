@@ -5,6 +5,8 @@ categories: 技巧
 tags: 技巧
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一 目录认识(可跳过)
 1. 打开配制文件 C:\Users\用户\AppData\Roaming\Rime (不是安装目录)

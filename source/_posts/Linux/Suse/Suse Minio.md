@@ -7,6 +7,8 @@ categories:
 tags: [linux,suse]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 #### 1 下载
 	$ wget https://dl.min.io/server/minio/release/linux-amd64/minio

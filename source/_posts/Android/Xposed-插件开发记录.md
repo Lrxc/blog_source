@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一  SharedPreferences数据保存
 putStringSet：一个key对应多个字段使用

@@ -5,6 +5,8 @@ categories: HybridApp
 tags: hybridapp
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一.  正常使用继承CordovaActivity 
 二.  重写 loadUrl("http://www.jianshu.com/") 

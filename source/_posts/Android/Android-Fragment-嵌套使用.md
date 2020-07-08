@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 1 setUserVisibleHint
 只有fragment与viewpager配合使用，才会调用

@@ -5,6 +5,8 @@ categories: Spring
 tags: spring
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ##环境及版本：
 - Idea：2019.2

@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 最近有个需求，水印图片，右上角有个logo，然后上面有些文字。涉及到不规则自动换行
 ![image.png](https://upload-images.jianshu.io/upload_images/2803682-bc74cf6392dc84bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

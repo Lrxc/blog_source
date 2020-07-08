@@ -5,6 +5,8 @@ categories: Java
 tags: java
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一. 常用通配符
 **都是通配符，没有区别，只是为了提高阅读性，使用A-Z中任意一个字母都是可以的**

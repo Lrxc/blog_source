@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 最近项目中使用相机功能，需要自定义，整理下，给需要的朋友
 实现的功能：前后镜头切换、闪光灯模式(三种)、对焦、镜头手势缩放、本地保存、弹窗预览

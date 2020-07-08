@@ -7,6 +7,8 @@ categories:
 tags: [linux,shell]
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 echo "====================gcc & gcc-c++ install====================";
 rpm -ivh data/gcc/*.rpm;

@@ -5,6 +5,8 @@ categories: Hexo
 tags: hexo
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 官网教程：https://theme-next.iissnan.com/getting-started.html
 
@@ -102,14 +104,103 @@ categories:
 
 刷新浏览器，就可以看到效果了
 
-#### 五 全局搜索功能
+#### 六 主题设置
+
+默认针对主题配置文件
+
+##### 1. 页面样式
+
+```bash
+scheme: Muse    #上下布局
+scheme: Pisces  #左右布局
+```
+
+##### 2. 设置语言
+
+```
+//站点配置文件
+language: zh-CN
+```
+
+##### 3. 头像
+
+```
+avatar:
+  url: /images/ico.jpg #图片路径
+  rounded: true  # 圆角
+  rotated: true  # 旋转
+```
+
+##### 4. 友情链接
+
+```
+links:
+  Github: https://github.com/Lrxc
+  Weibo: http://example.com/
+  WeChat: http://example.com/
+  
+social_icons:
+  enable: true      # 显示社交图标
+  icons_only: false # 只显示图标，不显示文字
+```
+
+##### 5. 底部
+
+```
+footer:
+  since: 2018        # 建站开始时间
+  icon:
+    name: user       # 设置 建站初始时间和至今时间中间的图标，默认是一个'小人像'，更改user为heart可以变成一个心
+    animated: true
+    color: "#808080" # 更改图标的颜色，红色为'#ff0000'
+  powered:
+    enable: true     # 开启hexo驱动
+    version: true    # 开启hexo版本号
+  theme:
+    enable: true     # 开启主题驱动
+    version: true    # 开启主题版本号
+  custom_text: Hosted by <a target="_blank" rel="external nofollow" href="https://pages.coding.me"><b>Coding Pages</b></a> # 这里的底部标识是为了添加coding page服务时的版权声明 打开注释就可以看到底部有一个 hosted by coding pages
+```
+
+##### 6. 文章自动折叠
+
+```
+auto_excerpt:
+  enable: true #自动折叠文章
+  length: 150  #显示行数
+```
+
+##### 7. 首页显示几篇文章
+
+站点配置文件
+
+```
+index_generator:
+  per_page: 6  #一页显示几条文章
+```
+
+##### 8. 页面统计人数
+
+```
+busuanzi_count:
+  enable: false              # 设true 开启
+  total_visitors: true       # 总阅读人数（uv数）
+  total_visitors_icon: user  # 阅读总人数的图标
+  total_views: true          # 总阅读次数（pv数）
+  total_views_icon: eye      # 阅读总次数的图标
+  post_views: true           # 开启内容阅读次数
+  post_views_icon: eye       # 内容页阅读数的图标
+
+```
+
+##### 9. 本地搜索功能
 
 安装搜索插件： `hexo-generator-searchdb`，根目录下执行以下命令
 ```
 $ npm install hexo-generator-searchdb --save
 ```
 
-项目根路径_config.yml
+站点配置文件_config.yml
 
 ```
 search:
@@ -119,68 +210,106 @@ search:
   limit: 10000
 ```
 
-next的_config.yml
+主题配置文件_config.yml
 
 ```
 local_search:
   enable: true
 ```
 
-#### 六 主题设置
+##### 10. 字数统计，阅读时长
 
-1. 页面样式
-
-```bash
-scheme: Muse    #上下布局
-scheme: Pisces  #左右布局
-```
-
-2. 设置语言
+安装插件
 
 ```
-//站点配置文件
-language: zh-CN
+npm install hexo-symbols-count-time --save
 ```
 
-3. 头像
+主题配置文件`_config.yml` 修改如下
 
 ```
-avatar:
-  url: /images/ico.jpg #图片路径
-  rounded: true  # 圆角
-  rotated: true  # 旋转
+symbols_count_time:
+  separated_meta: true  # false会显示一行
+  item_text_post: true  # 显示属性名称,设为false后只显示图标和统计数字,不显示属性的文字
+  item_text_total: true # 底部footer是否显示字数统计属性文字
+  awl: 4                # 计算字数的一个设置,没设置过
+  wpm: 275              # 一分钟阅读的字数
 ```
 
-4. 友情链接
+站点配置文件`_config.yml` 新增如下
 
 ```
-links:
-  Github: https://github.com/Lrxc
-  Weibo: http://example.com/
-  WeChat: http://example.com/
+symbols_count_time:
+ #文章内是否显示
+  symbols: true
+  time: true
+ # 网页底部是否显示
+  total_symbols: true
+  total_time: true
 ```
 
-5. 底部
+##### 11. 内容页里的代码块新增复制按钮
 
 ```
-footer:
-  # Powered by Hexo & NexT
-  powered: false
+codeblock:
+  copy_button:
+    enable: false      # 增加复制按钮的开关
+    show_result: false # 点击复制完后是否显示 复制成功 结果提示
 ```
 
-6. 文章自动折叠
+##### 12. 配置微信，支付宝打赏
 
 ```
-auto_excerpt:
-  enable: true #自动折叠文章
-  length: 150  #显示行数
+# Reward
+reward_comment:                   # 打赏描述
+wechatpay: /images/wechatpay.png  # 微信支付的二维码图片地址
+alipay: /images/alipay.png        # 支付宝的地址
+#bitcoin: /images/bitcoin.png     # 比特币地址
 ```
 
-7. 一页显示几篇文章
+##### 13. 声明文章原创
 
 ```
-//站点配置文件
-index_generator:
-  per_page: 6  #一页显示几条文章
+creative_commons:
+  license: by-nc-sa
+  sidebar: false
+  post: true       # 默认显示版权信息
+  language:
 ```
 
+##### 14. 相关文章推荐
+
+安装推荐文章的插件
+
+```
+npm install hexo-related-popular-posts --save
+```
+
+主题配置
+
+```
+related_posts:
+  enable: true
+  title: 相关文章推荐      # 属性的命名
+  display_in_home: false # false代表首页不显示
+  params:
+    maxCount: 5          # 最多5条
+    #PPMixingRate: 0.0   # 相关度
+    #isDate: true        # 是否显示日期
+    #isImage: false      # 是否显示配图
+    isExcerpt: false     # 是否显示摘要
+```
+
+##### 15. 背景动画设置
+
+#### Canvas-nest 风格
+
+进入 `theme/next` 目录，执行命令：
+
+```
+git clone https://github.com/theme-next/theme-next-canvas-nest source/lib/canvas-nest
+```
+
+实际上就是将一个显示动效的 js 文件 clone 到对应目录。
+
+这时将配置文件`_config.yml` 中的 `canvas_nest: false` 改为 `canvas_nest: true` 才能真正生效。

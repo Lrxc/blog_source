@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 AlertDialog 点击空白处可以取消，点击确定、取消按钮也会取消，但是有些场景不需要取消的。。
 空白处取消设置setCancelable(false) 即可 但是确定、取消按钮还是可以取消

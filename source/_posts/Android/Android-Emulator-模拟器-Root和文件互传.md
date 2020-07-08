@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ##一 文件互传、共享
 #### 1. 快接安装app或者复制文件到模拟器

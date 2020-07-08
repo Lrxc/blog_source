@@ -5,6 +5,8 @@ categories: Java
 tags: java
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一 汉化
 1 在Eclipse内上方菜单栏点击help，找到install new software

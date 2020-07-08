@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一 创建Module 
 1. 主Module app   地图Module map   相机Module camera，基础Module commonlib

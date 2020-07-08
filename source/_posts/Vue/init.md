@@ -5,6 +5,8 @@ categories: Vue
 tags: vue
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 # shopdemo
 

@@ -5,6 +5,8 @@ categories: HybridApp
 tags: hybridapp
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 不会新建项目的小伙伴点这儿http://www.jianshu.com/p/94267514204f
 

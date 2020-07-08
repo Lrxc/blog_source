@@ -5,6 +5,8 @@ categories: 技巧
 tags: 技巧
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 - 需要国际信用卡
 - Google账号

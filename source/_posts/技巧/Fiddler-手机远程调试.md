@@ -5,6 +5,8 @@ categories: 技巧
 tags: 技巧
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 一 Fiddler下载 
 官网 https://www.telerik.com/fiddler

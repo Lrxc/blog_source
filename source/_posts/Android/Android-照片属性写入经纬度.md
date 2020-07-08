@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 ![image.png](http://upload-images.jianshu.io/upload_images/2803682-a754be67f99fa5b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 

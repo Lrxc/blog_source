@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 公司的网，莫名其妙的不能更新了，却可以下载compile文件。。。
 于是乎翻墙，hosts，修改studio.exe.vmoptions文件 然并卵，都特么不行 搞了一天还是不行

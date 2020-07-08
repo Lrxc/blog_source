@@ -5,6 +5,8 @@ categories: HybridApp
 tags: hybridapp
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 #####说明： 这种方式是Cordova原生调用方式，优点是代码和逻辑简单，容易理解。标准版插件格式http://www.jianshu.com/p/2f00e1864fbd
 

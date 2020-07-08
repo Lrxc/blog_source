@@ -5,6 +5,8 @@ categories: Android
 tags: android
 ---
 
+<meta name="referrer" content="no-referrer" />
+
 
 偶然间遇到的一个问题，自定义view上传图片进度条，发现下层的控件还可以选。。。后来改成自定义dialog了
 抽空找了找资料 http://wenda.so.com/q/1447517100721093  发现好像没什么卵用。。。
