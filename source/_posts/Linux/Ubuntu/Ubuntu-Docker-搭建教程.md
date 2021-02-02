@@ -3,8 +3,8 @@ title: Ubuntu-Docker-搭建教程
 date: 2018-07-01 16:01:33
 categories: 
 - Linux 
-- Ubuntu
-tags: [linux,ubuntu]
+- Linux
+tags: [linux,linux]
 ---
 
 <meta name="referrer" content="no-referrer" />
@@ -12,8 +12,40 @@ tags: [linux,ubuntu]
 
 #安装环境及版本：
 - 系统：ubuntu 18.04 LTS
-- Gitlab: 最新版本 latest
-# 安装方式一 apt命令
+- Dcoker: 
+
+
+
+# 一 安装
+
+### 方式1 阿里云源
+
+```js
+# step 1: 安装必要的一些系统工具
+sudo apt-get update
+sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+# step 2: 安装GPG证书
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+# Step 3: 写入软件源信息
+sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
+# Step 4: 更新并安装Docker-CE
+sudo apt-get -y update
+sudo apt-get -y install docker-ce
+```
+
+
+
+### 方式2 脚本
+
+```
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh
+```
+
+
+
+### 方式3 apt命令
+
 ##### 1 设置存储库
 1. 更新apt包索引
 ```
@@ -52,7 +84,8 @@ $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 $ sudo docker run hello-world
 ```
-4. 常用命令
+# 二 常用命令
+
 ```
 // 启动 停止 重启 docker服务
 $ sudo service docker start|stop|restart
@@ -69,13 +102,24 @@ docker start/stop container-id||container-name 开启/停止 指定容器id或�
 docker version 版本信息
 ```
 
-# 安装方式二 便捷脚本安装
+# 国内镜像
+
+修改daemon配置文件/etc/docker/daemon.json来使用加速器
+
 ```
-$ curl -fsSL https://get.docker.com -o get-docker.sh
-$ sudo sh get-docker.sh
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://4oekmmf9.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 ```
 
-# 卸载
+
+
+# 三 卸载
 1. 卸载Docker CE软件包：
 ```
 $ sudo apt-get purge docker-ce

@@ -3,8 +3,8 @@ title: Ubuntu-Redis-配置
 date: 2018-07-01 16:01:33
 categories: 
 - Linux 
-- Ubuntu
-tags: [linux,ubuntu]
+- Linux
+tags: [linux,linux]
 ---
 
 <meta name="referrer" content="no-referrer" />
@@ -48,7 +48,8 @@ PONG
 ```
 
 四  外网访问
-打开配置文件：/etc/redis/edis.conf
+打开配置文件：/etc/redis/redis.conf
+
 ```
 //打开把bind一行 注释掉
 # bind 127.0.0.1

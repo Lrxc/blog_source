@@ -3,8 +3,8 @@ title: Ubuntu-Redis-集群
 date: 2018-07-01 16:01:33
 categories: 
 - Linux 
-- Ubuntu
-tags: [linux,ubuntu]
+- Linux
+tags: [linux,linux]
 ---
 
 <meta name="referrer" content="no-referrer" />

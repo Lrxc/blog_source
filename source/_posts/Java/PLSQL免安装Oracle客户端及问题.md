@@ -1,8 +1,8 @@
 ---
 title: PLSQL免安装Oracle客户端及问题
-date: 2019-07-01 16:01:33
-categories: Java
-tags: java
+date: 2020-07-01 16:01:33
+categories: Config
+tags: config
 ---
 
 <meta name="referrer" content="no-referrer" />

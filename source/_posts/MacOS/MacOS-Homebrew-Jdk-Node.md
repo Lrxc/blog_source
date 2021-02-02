@@ -52,7 +52,10 @@ git remote set-url origin https://github.com/Homebrew/homebrew-core.git
 #### 三 Java-Jdk
  - [参考来源](https://www.cnblogs.com/imzhizi/p/macos-jdk-installation-homebrew.html)
 ```
-# AdoptOpenJDK 
+//安装不同版本
+brew cask install homebrew/cask-versions/java6
+brew cask install homebrew/cask-versions/zulu7
+brew cask install homebrew/cask-versions/zulu8
 brew cask install AdoptOpenJDK/openjdk/adoptopenjdk8
 brew cask install AdoptOpenJDK/openjdk/adoptopenjdk9
 brew cask install AdoptOpenJDK/openjdk/adoptopenjdk10
@@ -60,15 +63,11 @@ brew cask install AdoptOpenJDK/openjdk/adoptopenjdk11
 brew cask install AdoptOpenJDK/openjdk/adoptopenjdk12
 brew cask install AdoptOpenJDK/openjdk/adoptopenjdk
 
-# Azul Zulu 提供了 JDK 7
-# Azul Zulu 也提供其他版本的 JDK 像 zulu8、zulu11 等
-brew cask install homebrew/cask-versions/zulu7
-brew cask install homebrew/cask-versions/zulu8
-brew cask install homebrew/cask-versions/zulu11
-brew cask install homebrew/cask-versions/zulu
-
-# Apple 提供的 JDK6
-brew cask install homebrew/cask-versions/java6
+//Jdk卸载
+sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin 
+sudo rm -fr /Library/PreferencePanes/JavaControlPanel.prefPane 
+sudo rm -fr ~/Library/Application\ Support/Oracle/Java
+删除/Library/Java目录
 ```
 #### 四 Node Js
 - 默认安装最高的版本

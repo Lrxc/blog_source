@@ -1,5 +1,5 @@
 ---
-title: github发布compile依赖
+title: Github发布compile依赖
 date: 2016-07-01 16:01:33
 categories: Android
 tags: android

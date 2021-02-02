@@ -3,15 +3,16 @@ title: Ubuntu-Jenkins-搭建全教程
 date: 2018-07-01 16:01:33
 categories: 
 - Linux 
-- Ubuntu
-tags: [linux,ubuntu]
+- Linux
+tags: [linux,linux]
 ---
 
 <meta name="referrer" content="no-referrer" />
 
 
-##一 安装Jenkins 
+## 一 安装Jenkins 
 1 需要先安装jdk环境
+
 ```
 //jenkins 对jdk版本有要求，具体看官网
 # sudo apt install openjdk-8-jdk-headless
@@ -32,7 +33,8 @@ tags: [linux,ubuntu]
 ```
 官方安装教程：https://jenkins.io/zh/doc/book/installing/#debianubuntu
 
-##二 配置jenkins
+## 二 配置jenkins
+
 1. 获取登录密码
 浏览器打开  http://192.168.x.x:8080
 ```
@@ -72,7 +74,8 @@ sudo chown -R root:root /var/lib/jenkins
 6. 安装maven项目插件(Maven Integration)
 ![image.png](https://upload-images.jianshu.io/upload_images/2803682-f239865d3c281f6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-##三 Jenkins 自动部署
+## 三 Jenkins 自动部署
+
 1. jenkins新建maven项目
 ![image.png](https://upload-images.jianshu.io/upload_images/2803682-a343f3bda587d68c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 2. 配置git代码地址
@@ -81,21 +84,23 @@ sudo chown -R root:root /var/lib/jenkins
 ![image.png](https://upload-images.jianshu.io/upload_images/2803682-5c89debd6e23f319.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 4. 自动部署脚本
 ![image.png](https://upload-images.jianshu.io/upload_images/2803682-afaf7847ebc7e705.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-```
+```shell
 # 将应用停止
 echo "Stopping SpringBoot Application"
 pid=`ps -ef | grep test.jar | grep -v grep | awk '{print $2}'`
 if [ -n "$pid" ]
 then
    kill -9 $pid
+else
+   echo Application is already stopped
 fi
 mv -f /var/lib/jenkins/workspace/test/target/jenkins-test-1.0-SNAPSHOT.jar /usr/local/spring/test.jar
 chmod 777 /usr/local/spring/test.jar
 echo "执行....."
-java -jar /usr/local/spring/test.jar
+nohup java -jar /usr/local/spring/test.jar &
 ```
 后台启动通用版，直接配置即可
-```
+```shell
 #服务器名称(pom文件定义)
 SERVER_NAME=jenkins-test
 # 生成的jar包名称
@@ -118,11 +123,33 @@ chmod 777 $JAR_WORK_PATH/$JAR_NAME
 echo "执行....."
 BUILD_ID=dontKillMe nohup java -jar $JAR_WORK_PATH/$JAR_NAME &
 ```
+参数说明：
+
+```shell
+####
+-z	检测字符串长度是否为0，为0返回 true。	[ -z $a ] 返回 false。
+-n	检测字符串长度是否不为 0，不为 0 返回 true。	[ -n "$a" ] 返回 true。
+
+#如果 expression 返回 true，then 后边的语句将会被执行；如果返回 false，不会执行任何语句
+if [ expression ]
+then
+   Statement(s) to be executed if expression is true
+fi
+
+#如果 expression 返回 true，那么 then 后边的语句将会被执行；否则，执行 else 后边的语句
+if [ expression ]
+then
+   Statement(s) to be executed if expression is true
+else
+   Statement(s) to be executed if expression is not true
+fi
+```
+
 5 开始构建并查看构建日志
 ![image.png](https://upload-images.jianshu.io/upload_images/2803682-898f820615e36215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-四 卸载jenkins
+## 四 卸载jenkins
 ```
 //服务
 sudo apt-get remove jenkins

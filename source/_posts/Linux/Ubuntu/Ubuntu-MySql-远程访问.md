@@ -3,66 +3,106 @@ title: Ubuntu-MySql-远程访问
 date: 2018-07-01 16:01:33
 categories: 
 - Linux 
-- Ubuntu
-tags: [linux,ubuntu]
+- Linux
+tags: [linux,linux]
 ---
 
 <meta name="referrer" content="no-referrer" />
 
 
-## 一 安装
+## 环境及版本
+
+- linux： ubuntu 18.0.4 lsb
+- mysql:   5.7.x || 8.x
+
+
+
+## 一 安装5.7.x(默认源)
 
 1. 安装命令
-```
-# sudo apt install mysql-server
-```
-2 .查看是否安装成功
-```
-# sudo netstat -tap | grep mysql
-```
-3 . 进入数据库
-```
-# sudo mysql -uroot -proot
-```
-4.查看数据库（必须分号）
-```
-# show databases;
-```
 
-## 二 修改配置（可选）
-1 修改密码
+   ```
+   # 更新源
+   sudo apt update
+   # 安装
+   sudo apt install mysql-server
+   # 查看是否安装成功
+   sudo service mysql status
+   ```
 
-```
-# sudo vim /etc/mysql/debian.cnf
-```
-2 重启
-```
-# sudo service mysql restart/start/stop
-```
+2. 修改用户密码（可选）
 
-## 三 外网访问
+   ```
+   #修改配置文件
+   sudo vim /etc/mysql/debian.cnf
+   #修改后重启
+   sudo service mysql restart
+   ```
 
-1  开放3306端口 
-```
-//其中bind-address = 127.0.0.1注释了
-# sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
-```
-2. 授权用户远程访问
-```
-//进入mysql命令行(root:root)
-mysql> grant all on *.* to root@'%' identified by 'root';
-flush privileges;
-```
-3 重启
-```
-service mysql restart
-```
-4 获取ip
-```
-# ifconfig
-```
+3. 外网访问
 
-## 四、完全删除
+   - 开放远程访问端口
+
+     ```
+     #其中bind-address = 127.0.0.1注释掉
+     sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+     ```
+
+   - 授权用户远程访问
+
+     ```
+     #进入mysql命令行，密码随便输一个就能进入(root:root)
+     sudo mysql -uroot -proot
+     #授权远程用户 root 和密码 root
+     mysql> grant all on *.* to root@'%' identified by 'root';
+     mysql> flush privileges;
+     ```
+
+   - 重启服务
+
+     ```
+     sudo service mysql restart
+     ```
+## 二 安装8.x
+
+1. 下载源配置文件
+
+   ```
+   wget -c https://repo.mysql.com//mysql-apt-config_0.8.16-1_all.deb
+   wget -c https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb 
+   ```
+
+2. 安装源
+
+   ```
+   sudo dpkg -i mysql-apt-config_0.8.16-1_all.deb
+   sudo apt update
+   ```
+
+3. 安装软件
+
+   ```
+   sudo apt-get install mysql-server
+   ```
+
+4. 修改密码
+
+   ```
+   ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的密码';  
+   ```
+
+5. 远程访问
+
+      ```
+      USE mysql;
+      CREATE USER 'user'@'localhost' IDENTIFIED BY 'Password';
+      GRANT ALL ON *.* TO 'user'@'localhost';
+      FLUSH PRIVILEGES;
+      ```
+
+
+
+## 三 完全删除
 
 1  删除mysql
 ```
