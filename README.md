@@ -11,6 +11,10 @@ github page: https://lrxc.github.io/blog/
 ```
 cd blog
 npm install hexo --save
+//远程git
+npm install hexo-deployer-git --save
+//hexo
+npm install -g hexo-cli
 ```
 
 运行项目
@@ -22,6 +26,13 @@ hexo clean
 hexo s
 //打包并发布
 hexo g -d
+```
+
+## 配置
+
+```
+//远程git地址:
+_config.yml -- url
 ```
 
 
