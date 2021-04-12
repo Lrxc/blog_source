@@ -18,7 +18,8 @@ tags: [linux,linux]
 
 ```
 //设置源
-zypper ar -f http://mirrors.163.com/openSUSE/distribution/openSUSE-stable/repo/oss/ oss
+zypper ar -f https://mirrors.cloud.tencent.com/opensuse/distribution/openSUSE-stable/repo/oss/ oss
+zypper ar -fcg https://repo.huaweicloud.com/opensuse/distribution/leap/15.2/repo/oss oss
 
 sudo zypper dist-upgrade
 sudo zypper update

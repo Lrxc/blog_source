@@ -8,8 +8,6 @@ tags: [linux,linux]
 ---
 
 <meta name="referrer" content="no-referrer" />
-
-
 ## 一. 查找文件
 
 ```shell
@@ -107,7 +105,7 @@ passwd -u <用户账号名>	#恢复用户账户口令
 passwd -d <用户账号名>	#清除用户账户口令
 ```
 
-## 六. 权限管理
+## 五. 权限管理
 
 **基础命令**
 
@@ -147,7 +145,7 @@ test:x:1002:100::/home/test:/bin/bash (1002 改成0)
 
 **以上方法都需要重新登录test才行。**
 
-## 中文文件乱码
+## 六 中文文件乱码
 
 修改当前用户
 
@@ -166,7 +164,7 @@ linux 文件乱码
 convmv -f gbk -t utf-8 -r --notest /home/file.zip 
 ```
 
-## 定时任务
+## 七 定时任务
 
 Linux Crontab
 
@@ -184,3 +182,20 @@ SpringBoot Scheduled
 1 * * * * * *	#每秒执行一次
 ```
 
+九 全局代理
+
+## 八 全局代理
+
+- http临时代理
+
+  ```
+  export http_proxy=http://127.0.0.1:1087
+  export https_proxy=http://127.0.0.1:1087
+  ```
+
+- sock临时代理
+
+  ```
+  export http_proxy=socks5://127.0.0.1:1080
+  export https_proxy=socks5://127.0.0.1:1080
+  ```

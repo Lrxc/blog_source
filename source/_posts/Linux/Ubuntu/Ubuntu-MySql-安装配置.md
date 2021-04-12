@@ -8,8 +8,6 @@ tags: [linux,linux]
 ---
 
 <meta name="referrer" content="no-referrer" />
-
-
 ## 环境及版本
 
 - linux： ubuntu 18.0.4 lsb
@@ -100,9 +98,33 @@ tags: [linux,linux]
       FLUSH PRIVILEGES;
       ```
 
+## 三 Docker 安装
 
+1. 镜像地址
 
-## 三 完全删除
+   https://hub.docker.com/_/mysql?tab=tags&page=1&ordering=last_updated
+
+2. 拉取镜像
+
+   ```
+   docker pull mysql:5.7
+   docker pull mysql:8.0
+   ```
+
+3. 运行容器
+
+   ```
+   //默认密码123456
+   docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
+   ```
+
+4. 进入mysql
+
+   ```
+   mysql -uroot -p
+   ```
+
+## 四 完全删除
 
 1  删除mysql
 ```

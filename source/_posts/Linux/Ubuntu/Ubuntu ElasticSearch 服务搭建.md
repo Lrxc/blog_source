@@ -1,5 +1,5 @@
 ---
-title: Ubuntu ElactisSearch 服务搭建
+title: Ubuntu ElasticSearch 服务搭建
 date: 2018-07-01 16:01:33
 categories: 
 - Linux 
@@ -8,13 +8,11 @@ tags: [linux,linux]
 ---
 
 <meta name="referrer" content="no-referrer" />
-
-
 ## 环境
 
 - linux: ubuntu 18.4
 
-- elactissearch: 6.5.3
+- elasticsearch: 6.5.3
 
 - jdk: open jdk 1.8
 
@@ -60,7 +58,15 @@ tags: [linux,linux]
 2. 运行容器
 
    ```
-   docker run -d -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --name elasticsearch-6.5.3 elasticsearch:6.5.3
+   docker run -d -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --name es elasticsearch:6.5.3
+   
+   #参数说明
+   -d：后台启动
+   -p：端口映射
+   -e：设置环境变量
+   -discovery.type=single-node：单机运行
+   --name：要生成的容器名称
+   elasticsearch:6.5.3：引用镜像名称和版本
    ```
 
 3. 进入容器
@@ -103,6 +109,12 @@ tags: [linux,linux]
    #先停止
    docker stop elasticsearch-6.5.3
    docker start elasticsearch-6.5.3
+   ```
+   
+8. 测试
+
+   ```
+   curl localhost:9200
    ```
 
 ## 三 手动增删改查命令

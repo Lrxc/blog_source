@@ -67,6 +67,8 @@ tags: macos
 
 ## 四 在线恢复模式
 
+官方教程: https://support.apple.com/zh-cn/HT204904
+
 1. Command (⌘)-R 当前系统版本
 2. Option-Command-R 安装最新版本
 3. Shift-Option-Command-R  安装出厂版本

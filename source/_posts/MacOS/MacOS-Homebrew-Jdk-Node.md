@@ -7,15 +7,39 @@ tags: macos
 
 <meta name="referrer" content="no-referrer" />
 
-
 #### 一 安装Homebrew 
+
+- git post 默认值设置
+
+```
+git config --global http.postBuffer 1048576000
+```
+
 - 官网：[https://brew.sh/index_zh-tw](https://brew.sh/index_zh-tw)
+
+  需要科学上网，dns(114)，终端代理(export http_proxy=http://127.0.0.1:1087)
 ```
 //安装
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 //卸载
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
 ```
+- 清华镜像： https://mirror.tuna.tsinghua.edu.cn/help/homebrew/
+```
+# 设置代理
+if [[ "$(uname -s)" == "Linux" ]]; then BREW_TYPE="linuxbrew"; else BREW_TYPE="homebrew"; fi
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/${BREW_TYPE}-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/${BREW_TYPE}-bottles"
+```
+
+```
+# 从本镜像下载安装脚本并安装 Homebrew / Linuxbrew
+git clone --depth=1 https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git brew-install
+/bin/bash brew-install/install.sh
+rm -rf brew-install
+```
+
 - 常用命令
 ```
 brew search 软件名，如brew search wget //搜索软件
@@ -26,42 +50,33 @@ brew remove 软件名，如brew remove wget//卸载软件
 #### 二 镜像源
 1. [中科大镜像](https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git)
 2. [清华大学开源软件镜像站](https://mirror.tuna.tsinghua.edu.cn/help/homebrew/)
-3. [知乎](https://www.zhihu.com/question/31360766)
 
 - 替换现有上游
 ```
-替换brew.git:
-cd "$(brew --repo)"
-git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+# 替换 brew 程序本身的源
+git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 
-替换homebrew-core.git:
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-```
-- 复原
-```
-重置brew.git:
-cd "$(brew --repo)"
-git remote set-url origin https://github.com/Homebrew/brew.git
+# 手动设置
+git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
+git -C "$(brew --repo homebrew/cask-fonts)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git
+git -C "$(brew --repo homebrew/cask-drivers)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-drivers.git
+git -C "$(brew --repo homebrew/cask-versions)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-versions.git\
 
-重置homebrew-core.git:
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+# 更换上游后需重新设置 git 仓库 HEAD
+brew update-reset
 ```
-
-#### 三 Java-Jdk
+#### 三 Jdk
  - [参考来源](https://www.cnblogs.com/imzhizi/p/macos-jdk-installation-homebrew.html)
 ```
 //安装不同版本
-brew cask install homebrew/cask-versions/java6
-brew cask install homebrew/cask-versions/zulu7
-brew cask install homebrew/cask-versions/zulu8
-brew cask install AdoptOpenJDK/openjdk/adoptopenjdk8
-brew cask install AdoptOpenJDK/openjdk/adoptopenjdk9
-brew cask install AdoptOpenJDK/openjdk/adoptopenjdk10
-brew cask install AdoptOpenJDK/openjdk/adoptopenjdk11
-brew cask install AdoptOpenJDK/openjdk/adoptopenjdk12
-brew cask install AdoptOpenJDK/openjdk/adoptopenjdk
+brew cask install adoptopenjdk8
+brew cask install adoptopenjdk9
+brew cask install adoptopenjdk10
+brew cask install adoptopenjdk11
+
+# 错误情况: Unknown command: cask
+brew install --cask adoptopenjdk8
 
 //Jdk卸载
 sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin 
