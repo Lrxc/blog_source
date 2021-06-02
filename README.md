@@ -9,7 +9,7 @@ github page: https://lrxc.github.io/blog/
 安装依赖
 
 ```
-cd blog
+cd blog_source
 npm install hexo --save
 npm install hexo-cli -g
 //远程git
@@ -29,12 +29,14 @@ hexo g -d
 
 ## 配置
 
+```yml
+_config.yml 
+#github page地址:
+url: xxx
+#git地址
+deploy:
+  repo: xxx
 ```
-//远程git地址:
-_config.yml -- url
-```
-
-
 
 ## 三方链接
 
