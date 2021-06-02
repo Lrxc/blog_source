@@ -3,8 +3,8 @@ title: Centos 基本命令
 date: 2018-07-01 16:01:33
 categories: 
 - Linux 
-- Linux
-tags: [linux,linux]
+- centos
+tags: [linux,centos]
 ---
 
 <meta name="referrer" content="no-referrer" />

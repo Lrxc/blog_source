@@ -44,6 +44,8 @@ lscpu
 free -h
 #磁盘空间
 df -h
+#文件夹大小
+du -h --max-depth=1 your_path
 ```
 
 ## 四. 用户管理
@@ -199,3 +201,46 @@ SpringBoot Scheduled
   export http_proxy=socks5://127.0.0.1:1080
   export https_proxy=socks5://127.0.0.1:1080
   ```
+
+## 九 解压缩
+
+1. tar
+
+   - 解压
+
+     ```
+     # 解压
+     tar zxvf temp.tar.gz
+     # 解压到指定路径
+     tar zxvf temp.tar.gz -C test
+     ```
+
+   - 压缩
+
+     ```
+     # 压缩1 (压缩包会包含/root/redis/temp 3层路径)
+     tar zcvf temp.tar.gz /root/redis/temp
+     
+     # 压缩2 (不要多余路径)
+     cd /root/redis/temp
+     tar zcvf temp.tar.gz *
+     # 压缩2 (不要多余路径,注意最后有个点)
+     tar zcvf temp.tar.gz -C /root/redis/temp .
+     ```
+
+2. zip
+
+   - 解压
+
+     ```
+     # 解压
+     unzip temp.zip
+     # 解压到指定路径
+     unzip temp.zip -d test
+     ```
+
+   - 压缩
+
+     ```
+     # 压缩
+     ```

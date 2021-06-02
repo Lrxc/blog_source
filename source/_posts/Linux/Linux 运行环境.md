@@ -10,7 +10,7 @@ tags: [linux,linux]
 <meta name="referrer" content="no-referrer" />
 
 
-####  Java Jdk
+##  Java Jdk
 修改 /etc/profile 文件
 ```shell
 #PATH 环境变量：作用是指定命令搜索路径
@@ -21,4 +21,14 @@ export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ```
 
-#### Adb
+## Adb
+
+## Maven
+
+```
+# 安装
+apt install maven
+# 查看版本
+mvn -version
+```
+

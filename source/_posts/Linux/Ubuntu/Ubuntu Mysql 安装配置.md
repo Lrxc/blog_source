@@ -1,5 +1,5 @@
 ---
-title: Ubuntu-MySql-远程访问
+title: Ubuntu Mysql 安装配置
 date: 2018-07-01 16:01:33
 categories: 
 - Linux 
@@ -20,6 +20,9 @@ tags: [linux,linux]
 1. 安装命令
 
    ```
+   # 华为云镜像
+   sudo sed -i "s@http://.*archive.ubuntu.com@http://repo.huaweicloud.com@g" /etc/apt/sources.list
+   sudo sed -i "s@http://.*security.ubuntu.com@http://repo.huaweicloud.com@g" /etc/apt/sources.list
    # 更新源
    sudo apt update
    # 安装
@@ -36,6 +39,19 @@ tags: [linux,linux]
    #修改后重启
    sudo service mysql restart
    ```
+
+   方式2
+
+   ```
+   use mysql;
+   // 下面这句命令有点长，请注意。
+   update mysql.user set authentication_string=password('root') where user='root' and Host ='localhost';
+   update user set plugin="mysql_native_password"; 
+   flush privileges;
+   quit;
+   ```
+
+   
 
 3. 外网访问
 
@@ -126,15 +142,41 @@ tags: [linux,linux]
 
 ## 四 完全删除
 
-1  删除mysql
-```
-# sudo apt-get remove --purge mysql-\*
-```
-2 查找剩余文件
-```
-# sudo find  / -name mysql -print
-```
-3 手动删除残留
-```
-# sudo    rm   -rf     /ect/init.d/mysql
-```
+1. 删除mysql
+
+   ```
+   # sudo apt-get remove --purge mysql-\*
+   ```
+
+2. 查找剩余文件
+
+   ```
+   # sudo find / -name mysql -print
+   ```
+
+3. 手动删除残留
+
+   ```
+   # sudo rm -rf /ect/init.d/mysql
+   ```
+
+## 五 附加配置
+
+1. 开启binlog
+
+   mysql 5.7 binlog ，mysql 8.0默认开启
+
+   ```
+   # vim /etc/mysql/my.conf 增加如下
+   [mysqld]
+     log-bin=mysql-bin
+     server-id=1
+   ```
+
+   查看状态
+
+   ```
+   mysql>SHOW VARIABLES LIKE '%bin%';
+   ```
+
+   

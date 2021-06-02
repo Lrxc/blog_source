@@ -8,7 +8,7 @@ tags: java
 <meta name="referrer" content="no-referrer" />
 
 
-## SpringBoot调优
+## 一 SpringBoot调优
 
 关于修改配置文件`application.properties`。
 
@@ -28,23 +28,18 @@ RES：resident memory usage 常驻内存
 VIRT：virtual memory usage	#进程“需要的”虚拟内存大小，包括进程使用的库、代码、数据等
 ```
 
-## Jvm调优
+## 二 Jvm调优
 
-**idea**
+**启动参数**
 
-```
+```sh
+# idea启动
 -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms1024m -Xmx1024m -Xmn256m -Xss256k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC
-```
 
-**java -jar**
-
-```
+# java jar启动
 java -jar -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms1024m -Xmx1024m -Xmn256m -Xss256k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC newframe-1.0.0.jar
-```
 
-**配置说明**
-
-```
+# 参数说明
 -XX:MetaspaceSize=128m （元空间默认大小）
 -XX:MaxMetaspaceSize=128m （元空间最大大小）
 -Xms1024m （堆最大大小）
@@ -56,7 +51,20 @@ java -jar -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms1024m -Xmx1024m -
 -XX:+PrintGCDetails （打印详细的GC日志）
 ```
 
-## 常用命令
+**jar附加参数**
+
+```sh
+java -jar xxx.jar
+
+# 指定依赖包所在的仓库位置，如果仓库中没有需要的依赖，启动jar包时还会自动连接远程仓库进行下载
+-Dthin.root=/root/repository 
+#预加载程序，执行“试运行”,它只解析和下载依赖项，而不运行任何用户代码:
+-Dthin.dryrun=true			 
+```
+
+
+
+## 三 监控命令
 
 **1. jps**
 
@@ -117,21 +125,26 @@ FGCT：从应用程序启动到采样时老年代中GC所使用的时间（单�
 jstat -gc 10010 1000 3  //对进程10010的每个1分钟打印一次，共3次
 ```
 
-**4 Jvisualvm 可视化工具**
+## 四 可视化工具
 
-**linux使用以下命令启动，windows JMX 端口连接**
+1. Jvisualvm 
 
-```java
-/**
-* 这是一整条命令
-* hostname:linux的ip
-* port windows连接用的端口
-**/
-java -Djava.rmi.server.hostname=192.168.32.129 
--Djava.security.policy=jstatd.all.policy 
--Dcom.sun.management.jmxremote.authenticate=false 
--Dcom.sun.management.jmxremote.ssl=false 
--Dcom.sun.management.jmxremote.port=8888 
--Xms1g -Xmx1g -jar pure-1.0-SNAPSHOT.jar
-```
+   **linux使用以下命令启动，windows JMX 端口连接**
 
+   ```
+   /**
+   * 这是一整条命令
+   * hostname:linux的ip
+   * port windows连接用的端口
+   **/
+   java -Djava.rmi.server.hostname=192.168.32.129 
+   -Djava.security.policy=jstatd.all.policy 
+   -Dcom.sun.management.jmxremote.authenticate=false 
+   -Dcom.sun.management.jmxremote.ssl=false 
+   -Dcom.sun.management.jmxremote.port=8888 
+   -Xms1g -Xmx1g -jar pure-1.0-SNAPSHOT.jar
+   ```
+
+2. jconsole
+
+   启动java/bin路径下jconsole.exe

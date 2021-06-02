@@ -1,5 +1,5 @@
 ---
-title: Ubuntu-18-Mysql主从配置+MyCat
+title: Ubuntu Mysql 主从配置+MyCat
 date: 2018-07-01 16:01:33
 categories: 
 - Linux 

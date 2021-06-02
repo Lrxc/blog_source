@@ -16,6 +16,10 @@ tags: [linux,linux]
 
 - jdk: open jdk 1.8
 
+  ```
+  yum install java-11-openjdk -y
+  ```
+  
   
 
 ## 一 服务搭建(压缩包)
@@ -28,24 +32,62 @@ tags: [linux,linux]
    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.3.tar.gz
    tar -xzf elasticsearch-6.5.3.tar.gz
    cd elasticsearch-6.5.3/
+   
+   # 7.x版本(推荐)
+   https://repo.huaweicloud.com/elasticsearch/7.12.0/elasticsearch-7.12.0-linux-x86_64.tar.gz
    ```
 
-2. 启动服务
+2. 配置
 
-   需要新建一个非root账号，elastic不支持root账号启动(参照后面常见问题2)
+   > 需要新建一个非root账号，elastic不支持root账号启动
+
+   ```
+   adduser esuser	#新建一个用户(useradd)
+   passwd esuser 	#设置密码
+   su esuser		#切换用户
+   cat /etc/passwd #查看所有用户
+   userdel esuser  #删除用户
+   
+   #赋值es文件夹权限
+   chown -R esuser elasticsearch
+   ```
+
+   > 外网访问：去掉`network.host`的注释，将它的值改成`0.0.0.0`，然后重新启动 Elastic, 关闭防火墙！！！
+
+   ```
+   # vim config/elasticsearch.yml
+   network.host: 0.0.0.0
+   discovery.type: single-node #单节点模式
+   ```
+
+3. 启动服务
 
    ```
    ./bin/elasticsearch
    ./bin/elasticsearch -d	#后台启动
    ```
 
-3. 测试成功
+4. 测试成功
 
    ```
    curl localhost:9200
    ```
 
-   ![image-20201208160806130.png](https://upload-images.jianshu.io/upload_images/2803682-22bd43d5658897fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+5. ik分词器
+
+   > 下载后解压到es的plusins路径下，**重启es即可**
+
+   ```
+   # 下载
+   https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.12.0/elasticsearch-analysis-ik-7.12.0.zip
+   # 解压到es的plusins路径下
+   unzip elasticsearch-analysis-ik-7.12.0.zip -c plugins/ik
+   ```
+
+   ```
+   # 重启后，查看es加载的插件
+   ./bin/elasticsearch-plugin list
+   ```
 
 ## 二 服务搭建(Docker)
 
@@ -117,71 +159,161 @@ tags: [linux,linux]
    curl localhost:9200
    ```
 
-## 三 手动增删改查命令
+## 三 可视化界面kibana
 
-1. 检测集群是否健康。 确保9200端口号可用
+1. 下载
 
    ```
+   https://artifacts.elastic.co/downloads/kibana/kibana-7.12.0-linux-x86_64.tar.gz
+   ```
+
+2. 配置
+
+   ```
+   # vim config/kibana.yml
+   server.host: “0.0.0.0”
+   ```
+
+3. 汉化（可选）
+
+   ```
+   # 中文国际化文件路径
+   kibana-7.12.0-linux-x86_64/x-pack/plugins/translations/translations/zh-CN.json
+   
+   # vim config/kibana.yml
+   i18n.locale: "zh-CN"
+   ```
+
+4. 启动
+
+   ```
+   # 赋值es文件夹权限
+   chown -R esuser kibana-7.12.0-linux-x86_64
+   # 启动
+   ./bin/kibana
+   ```
+
+5. 访问
+
+   ```
+   localhost:5601
+   ```
+
+6. 测试
+
+   > 左侧开发工具中输入，即可验证
+
+   ```
+   GET _analyze
+   {
+    "analyzer": "ik_smart"
+    , "text": ["中国人民解放军"]
+   }
+   
+   GET _analyze
+   {
+    "analyzer": "ik_max_word"
+    , "text": ["中国人民解放军"]
+   }
+   ```
+
+   
+
+## 四 手动增删改查命令(dsl语法)
+
+> dsl: Domain Specific Language 的缩写，中文翻译为领域特定语言
+
+1. sql转dsl
+
+   ```
+   POST /_sql/translate
+   {
+     "query":"select * from complex where name ='张三'"
+   }
+   ```
+
+2. 信息
+
+   ```
+   # 检测集群是否健康。 确保9200端口号可用
    curl 'localhost:9200/_cat/health?v'
-   ```
-
-2. 获取集群的节点列表
-
-   ```
+   # 获取集群的节点列表
    curl 'localhost:9200/_cat/nodes?v'
    ```
 
-3. 列出所有索引
+3. 索引
 
    ```
+   # 列出所有索引
    curl 'localhost:9200/_cat/indices?v'
-   ```
-
-4. 创建索引
-
-   ```
-   curl -XPUT 'localhost:9200/test?pretty'
-   #查看索引详情
-   curl localhost:9200/test?pretty
-   ```
-
-5. 插入和获取
-
-   ```
-   # 插入数据指定id为1
-   curl -H "Content-Type: application/json" -XPUT 'localhost:9200/test/external/1?pretty' -d '{"name": "hello world"}'
-   # 获取customer索引下类型为external，id为1的数据
-   curl -XGET 'localhost:9200/test/external/1?pretty'
-   ```
-
-6. 删除索引 DELETE
-
-   ```
-   curl -XDELETE 'localhost:9200/test?pretty'
-   curl 'localhost:9200/_cat/indices?v'
-   ```
-
-## 四 常见问题
-
-1. 默认情况下，Elastic 只允许本机访问，如果需要远程访问，可以修改 Elastic 安装目录的`config/elasticsearch.yml`文件，去掉`network.host`的注释，将它的值改成`0.0.0.0`，然后重新启动 Elastic
-
-   ```
-   network.host: 0.0.0.0
-   discovery.type: single-node
-   ```
-
-   关闭防火墙！！！
-
-2. 不允许root启动
-
-   ```
-   useradd esuser	#新建一个用户
-   passwd esuser 	#设置密码
-   su esuser		#切换用户
    
-   #赋值es文件夹权限
-   chown -R esuser elasticsearch-6.5.3
+   # 创建索引
+   curl -XPUT 'localhost:9200/test?pretty'
+   # 查看单个索引详情
+   curl localhost:9200/test?pretty
+   
+   #删除索引
+   curl -XDELETE 'localhost:9200/test?pretty'
    ```
+
+4. 文档
+
+   ```
+   # 新增
+   curl -H "Content-Type: application/json" -XPUT 'localhost:9200/test/external/1' -d '{"name": "张三"}'
+   # 查询
+   curl -XGET 'localhost:9200/test/external/1'
+   # 修改
+   curl -H "Content-Type: application/json" -XPOST 'localhost:9200/test/external/1/_update' -d '{"doc":{"name":"李四"}}'
+   # 删除
+   curl -XDELETE 'localhost:9200/test/external/1'
+   ```
+
+5. 复杂查询
+
+   ```
+   # 插入数据
+   curl -H "Content-Type: application/json" -XPUT 'localhost:9200/complex/_doc/1' -d '{"name": "张三1","age":1}'
+   curl -H "Content-Type: application/json" -XPUT 'localhost:9200/complex/_doc/2' -d '{"name": "张三2","age":2}'
+   curl -H "Content-Type: application/json" -XPUT 'localhost:9200/complex/_doc/3' -d '{"name": "张三3","age":3}'
+   
+   # 查询全部
+   curl -XGET 'localhost:9200/complex/_doc/_search'
+   
+   # 模糊查询，排序，分页
+   GET complex/_doc/_search
+   {
+    "query":{
+      "match":{
+        "name":"张三1"
+      }
+    },
+    "sort":{
+      "age":{
+        "order":"desc"
+      }
+    },
+    "from":0,
+    "size":10
+   }
+   
+   # 高亮查询
+   GET complex/_doc/_search
+   {
+     "query":{
+       "match":{
+         "name":"张三"
+       }
+     },
+     "highlight":{
+       "fields":{
+         "name":{}
+       }
+     }
+   }
+   ```
+
+## 五 常见问题
 
 3. Native controller process has stopped - no new native processes can be started
 
@@ -202,7 +334,7 @@ tags: [linux,linux]
 
 4. max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
 
-   指定单节点模式即可，解决方案同上3
+   指定单节点模式即可，解决方案同上
 
 #### 参考：
 

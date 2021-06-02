@@ -32,6 +32,10 @@ tags: [config,idea]
 - MyBatisCodeHelperPro
 
   Mybatis 接口跟 xml 跳转，高级功能需要会员
+  
+- MybatisX
+
+  同上，免费版
 
 二 美化
 
